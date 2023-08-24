@@ -1,0 +1,26 @@
+.newsletter-contain {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.newsletter-title {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.newsletter-input {
+  
+    margin-right: .5em;
+}
+
+.newsletter-btn {
+    border-radius: .3em;
+    border: none;
+    padding: .5em;
+    background-color: red;
+    color: white;
+    width: 20em;
+}
