@@ -1,10 +1,3 @@
-.product-contain {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-img {
-    max-width: 50%;
-    
+.product-img {
+    height: 80px;
 }
