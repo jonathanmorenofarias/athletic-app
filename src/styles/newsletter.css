@@ -1,9 +1,5 @@
 .newsletter-contain {
     padding: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
 }
 
 .newsletter-title {
@@ -11,16 +7,27 @@
     font-size: 1rem;
 }
 
+.newsletter-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .newsletter-input {
-  
-    margin-right: .5em;
+    width: 18em;
+    height: 2.5em;
+    padding: 0 0 0 .5em;
+    margin: .5em .5em .5em .5em;
 }
 
 .newsletter-btn {
+    margin: .5em .5em .5em .5em;
     border-radius: .3em;
     border: none;
     padding: .5em;
     background-color: red;
     color: white;
-    width: 20em;
+    width: 19em;
+    height: 3em;
 }

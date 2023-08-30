@@ -5,9 +5,9 @@ function Newsletter() {
     return (
       <div className="newsletter-contain">
         <p className="newsletter-title">Subscribe to get the latest news on our products!</p>
-        <div>
+        <div className="newsletter-main">
             <input className="newsletter-input" type="text" placeholder="Email"/>
-            <button className="newsletter-btn">Subscribe</button>
+            <button className="newsletter-btn">Subscrisbe</button>
         </div>
       </div>
     );

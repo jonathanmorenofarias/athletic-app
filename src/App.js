@@ -9,10 +9,10 @@ function App() {
 
   return (
     <div className="App">
-      <Nav />
-      <TopSold />
-      <Newsletter />
-      <Footer />
+      <Nav className="nav"/>
+      <TopSold className="nav"/>
+      <Newsletter className="nav"/>
+      
     </div>
   );
 }
