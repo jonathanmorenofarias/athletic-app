@@ -1,0 +1,5 @@
+<div className={`h-[100vh] w-[100vw] bg-[white] absolute md:hidden duration-500 ${burgerOpen ? "top-[4rem] z-0": "-top-[100vh]"}`}>
+        <div className={burgerOpen ? `flex flex-col p-[2rem]` : "hidden"}>
+            {allCategories}
+          </div>
+        </div>

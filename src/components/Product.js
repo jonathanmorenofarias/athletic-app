@@ -1,12 +1,12 @@
 import React from "react";
-import '../styles/product.css';
+
 
 function Product(props) {
     return (
-        <div className="product-contain">
-          <img className="product-img" src={props.image} alt={`Image of ${props.name}`} />
-          <p className="product-name">{props.name}</p>
-          <p className="product-price">{props.price}</p>
+        <div className="flex flex-col justify-center items-center h-[90vw] w-[90vw] border-2">
+          <img src={props.image} className="h-[75%]"/>
+          <p>{props.name}</p>
+          <p>{props.price}</p>
         </div>
     );
   }

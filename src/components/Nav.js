@@ -1,23 +1,62 @@
 import React from "react";
-import '../styles/nav.css';
+import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import logo from '../images/RLogo.png'
+import userEvent from "@testing-library/user-event";
+
 function Nav() {
+    const [burgerOpen, setBurgerOpen] = useState(false)
+
+    function toggleBurger () {
+      setBurgerOpen(x => !x)
+    }
+
+    let categories = [
+      {
+        name: "Supplements",
+        data: ["Pre-workout", "Creatine", "Protein Powder"]
+      },
+      {
+        name: "Apparel",
+        data: ["Womens", "Mens"]
+      },
+      {
+        name: "Accesories",
+        data: ["Bags", "Water Bottles", "Extra"]
+      }
+    ];
+
+    const allCategories = categories.map(x => {
+      return(
+        <div>
+          <h1 className="text-[1.5rem]">{x.name}</h1>
+          {x.data.map(y => {
+            return (<p>{y}</p>)
+          })}
+        </div>
+      )
+    })
+
     return (
-      <nav className="nav-contain">
-        <div className="navigate">
-          <FontAwesomeIcon className="hamburger" icon={faBars} />
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
+      <header>
+        <div className="flex justify-between items-center bg-white h-[4rem] w-[100%] p-[1rem] shadow-md sticky top-0 z-50">
+            <div className="flex gap-[1rem] text-[1.25rem]">
+              <FontAwesomeIcon icon={faBars} onClick={toggleBurger} />
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </div>
+            <div className="flex h-[100%] items-center">
+              <img src={logo} alt="R Athletics Logo" className="h-[100%]"/>
+              <a href="">ATHLETICS</a>
+            </div>
+            <FontAwesomeIcon className="text-[1.25rem]" icon={faCartShopping} />
         </div>
-        <div className="brand">
-          <img className="brand-logo" src={logo} alt="R Athletics Logo" />
-          <a className="brand-name" href="">ATHLETICS</a>
+        <div className={`h-[100vh] w-[100vw] bg-[white] absolute md:hidden duration-500 ${burgerOpen ? "top-[4rem] z-0": "-top-[100vh]"}`}>
+        <div className={burgerOpen ? `flex flex-col p-[2rem]` : "hidden"}>
+            {allCategories}
+          </div>
         </div>
-        <div className="purchase">
-          <FontAwesomeIcon icon={faCartShopping} />
-        </div>
-      </nav>
+      </header>
     );
   }
 

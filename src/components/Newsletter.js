@@ -1,13 +1,13 @@
 import React from "react";
-import '../styles/newsletter.css';
+
 
 function Newsletter() {
     return (
-      <div className="newsletter-contain">
-        <p className="newsletter-title">Subscribe to get the latest news on our products!</p>
-        <div className="newsletter-main">
-            <input className="newsletter-input" type="text" placeholder="Email"/>
-            <button className="newsletter-btn">Subscrisbe</button>
+      <div className="flex flex-col justify-center items-center gap-[1rem] my-[2rem]">
+        <p className="text-center">Subscribe to get the latest news on our products!</p>
+        <div className="flex flex-col justify-center items-center gap-[.5rem]">
+            <input className="w-[90vw] h-[2rem] border-2 p-[.5rem] rounded-lg" type="text" placeholder="Email"/>
+            <button className="w-[90vw] h-[2rem] bg-[red] text-white rounded-lg">Subscribe</button>
         </div>
       </div>
     );
