@@ -39,8 +39,9 @@ function Nav() {
     })
 
     return (
-      <header>
-        <div className="flex justify-between items-center bg-white h-[4rem] w-[100%] p-[1rem] shadow-md sticky top-0 z-50">
+      <header className="sticky top-0">
+        
+        <div name="non" className="flex justify-between items-center bg-white h-[4rem] w-[100%] p-[1rem] shadow-md z-[100]">
             <div className="flex gap-[1rem] text-[1.25rem]">
               <FontAwesomeIcon icon={faBars} onClick={toggleBurger} />
               <FontAwesomeIcon icon={faMagnifyingGlass} />
@@ -51,9 +52,9 @@ function Nav() {
             </div>
             <FontAwesomeIcon className="text-[1.25rem]" icon={faCartShopping} />
         </div>
-        <div className={`h-[100vh] w-[100vw] bg-[white] absolute md:hidden duration-500 ${burgerOpen ? "top-[4rem] z-0": "-top-[100vh]"}`}>
-        <div className={burgerOpen ? `flex flex-col p-[2rem]` : "hidden"}>
-            {allCategories}
+        <div name="mobile" className={`h-[75vh] w-[100vw] bg-[white] absolute md:hidden duration-500 -z-50 ${burgerOpen ? "top-[4rem] shadow-2xl": "-top-[100vh]"}`}>
+          <div className={burgerOpen ? `flex flex-col p-[2rem]` : "hidden"}>
+              {allCategories}
           </div>
         </div>
       </header>
