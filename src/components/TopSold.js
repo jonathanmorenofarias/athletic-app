@@ -9,7 +9,7 @@ function TopSold(props) {
     }
 
     return (
-        <div className="text-center py-[1.25rem] border-y-[1.5px] border-[#cccccc]">
+        <div className="text-center py-[1.25rem] border-[#cccccc]">
             <h1 className="text-[1.5rem] font-bold">SHOP BEST SELLERS</h1>
             <div className="grid grid-flow-col overflow-x-auto gap-[2rem]">
                 {arr}

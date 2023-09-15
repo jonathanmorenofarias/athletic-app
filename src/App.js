@@ -1,4 +1,3 @@
-import './App.css';
 import Nav from "./components/Nav";
 import LandingProduct from './components/LandingProduct';
 import Newsletter from "./components/Newsletter";
@@ -9,11 +8,10 @@ import TopSold from "./components/TopSold";
 function App() {
 
   return (
-    <div className="App">
+    <div className="overflow-x-hidden">
       <Nav/>
       <LandingProduct/>
       <TopSold/>
-      <Newsletter/>
       <Footer/>
     </div>
   );
