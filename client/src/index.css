@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+@layer base {
+    body{
+        @apply font-[helvetica];
+    }
+}
+
+.line-hover{
+    position: relative;
+    cursor: pointer;
+}
+.line-hover::after {
+    content: "";
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    height: 2px;
+    bottom: -.5rem;
+    width: 100%;
+    left: 0;
+    transform: scale(0,1);
+    transition: .2s;
+}
+.line-hover:hover::after {
+    transform: scale(1,1);
+}
+
+.hr-foot {
+    width: 90vw;
+    border-top: 1px solid rgb(255, 255, 255);
+}
+
+.hr-prod {
+    width: 100%;
+    margin-top: .5rem;
+    border-top: 1px solid #c2c2c2;
+}
+
+.shadow-review {
+    box-shadow: 0 0 8px 0 #d6d6d6;
+}
