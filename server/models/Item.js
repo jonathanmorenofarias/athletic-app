@@ -4,6 +4,9 @@ const itemSchema = new mongoose.Schema({
         name:{
             type: String, required: true
         },
+        type: {
+            type: String, required: true
+        },
         defaultImage: {
             type: String, required: true
         },
@@ -13,7 +16,7 @@ const itemSchema = new mongoose.Schema({
         sold: {
             type: Number, default: 0
         },
-        type: [{
+        elements: [{
              variant: {
                 type: String, required: true
             },

@@ -58,9 +58,9 @@ function Nav() {
             <Link to="/"><img src="https://res.cloudinary.com/dwdrq4xo1/image/upload/v1695802299/wave/Global/logo_ps7vvu.png" alt="Wave Logo" className="h-[3rem]"/> </Link>
             </div>
             <div className="lg:flex hidden text-[.9rem] text-white gap-[1rem]">
-              <Link to={"/supplements"}><h1 className="line-hover">Supplements</h1></Link>
-              <Link to="/apparel"><h1 className="line-hover">Apparel</h1></Link>
-              <Link to="/accessories"><h1 className="line-hover">Accessories</h1></Link>
+              <a href="/supplements" ><h1 className="line-hover">Supplements</h1></a>
+              <a href="/apparel"><h1 className="line-hover">Apparel</h1></a>
+              <a href="/accessories"><h1 className="line-hover">Accessories</h1></a>
             </div>
             <div className="flex gap-[1rem] text-[1.25rem]">
             <HiOutlineMagnifyingGlass onClick={toggleSearch} className="text-white lg:justify-self-start cursor-pointer" />

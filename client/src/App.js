@@ -3,10 +3,9 @@ import Nav from "./pages/global/Nav";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import Footer from "./pages/global/Footer";
-import Supplements from "./pages/Supplements";
+import AllProducts from "./pages/AllProducts";
 import ViewProduct from "./pages/ViewProduct";
-import Apparel from "./pages/Apparel";
-import Accessories from "./pages/Accessories";
+
 
 function App() {
 
@@ -16,9 +15,7 @@ function App() {
           <Nav/>
           <Routes>
             <Route path="/" element={<Home/>}/>
-            <Route path="/supplements" element={<Supplements/>}/>
-            <Route path="/apparel" element={<Apparel/>}/>
-            <Route path="/accessories" element={<Accessories/>}/>
+            <Route path="/:productType" element={<AllProducts/>}/>
             <Route path="/items/:productID" element={<ViewProduct/>}/>
             <Route path='*' element={<NotFound />}/>
           </Routes>

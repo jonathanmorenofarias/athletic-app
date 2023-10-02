@@ -1,4 +1,4 @@
-import {IoMdStarHalf, IoMdStar} from "react-icons/io";
+import {IoMdStarHalf, IoMdStar, IoMdStarOutline} from "react-icons/io";
 
 function Review (props) {
     
@@ -10,6 +10,7 @@ function Review (props) {
             <div className="flex">
                 {Array(Math.floor(props.rating)).fill(<IoMdStar className='text-[2rem]'/>)}
                 {props.rating - Math.floor(props.rating) === 0.5 ? <IoMdStarHalf className='text-[2rem]'/> : null}
+                {Array(5 - Math.ceil(props.rating)).fill(<IoMdStarOutline className='text-[2rem]'/>)}
             </div>
             <p className="text-[1.15rem] font-semibold">{props.header}</p>
             <p>{props.comment}</p>

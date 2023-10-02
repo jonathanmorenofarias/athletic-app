@@ -42,3 +42,17 @@
 .shadow-review {
     box-shadow: 0 0 8px 0 #d6d6d6;
 }
+
+select {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+  }
+
+.select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  

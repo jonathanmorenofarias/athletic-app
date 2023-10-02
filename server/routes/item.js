@@ -24,20 +24,40 @@ router.get('/:productID', async (req, res) => {
 
 router.get('/category/supplements', async (req, res) => {
     try {
-        const supps = await Item.find();
+        const supps = await Item.find({ type: "supplements"});
         res.status(200).json(supps);
     }catch (err) {
         res.status(500).json({ message: err.message });
     }   
 });
 
+router.get('/category/apparel', async (req, res) => {
+    try {
+        const supps = await Item.find({ type: "apparel"});
+        res.status(200).json(supps);
+    }catch (err) {
+        res.status(500).json({ message: err.message });
+    }     
+});
+
+router.get('/category/accessories', async (req, res) => {
+    try {
+        const supps = await Item.find({ type: "accessories"});
+        res.status(200).json(supps);
+    }catch (err) {
+        res.status(500).json({ message: err.message });
+    }     
+});
+
+
 router.post('/', async (req, res) => {
     const item = new Item ({
         name: req.body.name,
+        type: req.body.type,
+        elements: req.body.elements,
         defaultImage: req.body.defaultImage,
         price: req.body.price,
         sold: req.body.sold,
-        type: req.body.type,
         shortDesc: req.body.shortDesc,
         longDesc: req.body.longDesc,
         reviews: req.body.reviews
