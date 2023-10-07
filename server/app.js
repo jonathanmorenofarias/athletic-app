@@ -1,6 +1,7 @@
 const express = require('express');
 const database = require('./database');
 const itemRoutes = require('./routes/item');
+const userRoutes = require('./routes/user');
 
 const port = process.env.PORT || 3000
 const app = express();
@@ -15,6 +16,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 app.use('/api/items', itemRoutes);
+app.use('/api/user', userRoutes);
 
 //listen on env port or 3000 if none
 

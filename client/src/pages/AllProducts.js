@@ -33,9 +33,9 @@ function AllProducts () {
     
 
     return (
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-start items-center my-[2rem]">
             <h1 className="text-[.8rem] text-[#AAAAAA]">{products.length} products</h1>
-            <div className="flex justify-center flex-wrap gap-[5rem]">
+            <div className="flex justify-center flex-wrap gap-[2rem]">
                 {products.map(product => (
                     <Product 
                     key={product._id} 

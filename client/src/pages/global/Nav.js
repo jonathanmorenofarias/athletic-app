@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import Search from "./Search.js";
 import { useState } from "react";
-import { AiOutlineMenu, AiOutlineClose} from 'react-icons/ai';
+import { AiOutlineMenu, AiOutlineClose, AiOutlineUser} from 'react-icons/ai';
 import { HiOutlineMagnifyingGlass } from 'react-icons/hi2'
 import { BsCart } from 'react-icons/bs';
 
@@ -62,13 +62,15 @@ function Nav() {
               <a href="/apparel"><h1 className="line-hover">Apparel</h1></a>
               <a href="/accessories"><h1 className="line-hover">Accessories</h1></a>
             </div>
-            <div className="flex gap-[1rem] text-[1.25rem]">
+            <div className="flex gap-[1rem] text-[1.5rem]">
+              
             <HiOutlineMagnifyingGlass onClick={toggleSearch} className="text-white lg:justify-self-start cursor-pointer" />
               <div className={`flex justify-center items-center w-[100vw] h-[15rem] absolute bg-white gap-[1rem] md:gap-[4rem] duration-500 shadow-2xl left-0 ${searchOpen? "top-0": "-top-[20rem]"}`}>
                 <Search />
                 <AiOutlineClose onClick={toggleSearch} className="cursor-pointer"/>
               </div>
-            <BsCart onClick={toggleCart} className="text-[1.2rem] text-white cursor-pointer"/>
+              <Link to="/login"><AiOutlineUser className=" text-white cursor-pointer"/></Link>
+            <BsCart onClick={toggleCart} className="text-[1.4rem] text-white cursor-pointer"/>
             </div>
             <div className={`absolute bg-white md:w-[25rem] w-[90vw] h-[100vh] p-[2rem] top-0 shadow-2xl duration-500 ${cartOpen ? "right-0": "md:-right-[25rem] -right-[90vw]"}`}>
               <AiOutlineClose onClick={toggleCart} className=" cursor-pointer float-right"/>

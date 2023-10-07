@@ -5,7 +5,8 @@ import Home from "./pages/Home";
 import Footer from "./pages/global/Footer";
 import AllProducts from "./pages/AllProducts";
 import ViewProduct from "./pages/ViewProduct";
-
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
 
@@ -17,6 +18,8 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/:productType" element={<AllProducts/>}/>
             <Route path="/items/:productID" element={<ViewProduct/>}/>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/register" element={<Register/>}/>
             <Route path='*' element={<NotFound />}/>
           </Routes>
           <Footer/>
