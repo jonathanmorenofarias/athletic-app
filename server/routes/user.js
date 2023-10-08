@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
 
 router.post('/register', async (req, res) => {
     const hash = await bcrypt.hash(req.body.password, 12)
@@ -19,15 +20,38 @@ router.post('/register', async (req, res) => {
     }
 }); 
 
-router.post('/login', async (req, res) => {
-    const user = await User.findOne({ username: req.body.username });
 
-    const validPassword = await bcrypt.compare(req.body.password, user.password);
-    if (validPassword) {
-        res.status(200).json(user);
-    } else
+router.post('/login', async (req, res) => {
+    try {
+        const user = await User.findOne({ username: req.body.username });
+        if (!user) return res.status(401).json("Wrong Username");
+
+        const validPassword = await bcrypt.compare(req.body.password, user.password);
+        if (!validPassword) return res.status(401).json("Wrong Password");
+
+        const accessToken = jwt.sign(
+            {
+                id: user._id,
+                username: user.username
+            }, 
+            process.env.ACCESS_TOKEN_SECRET
+        );
+        res.status(200).json(accessToken);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+function authenticateToken (req, res, next) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(" ")[1];
+
+    if (token === null) return res.sendStatus(401)
     
-    res.status(400).json("user not found");
-}); 
+    jwt.verify(token, proccess.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        
+    })
+
+}
 
 module.exports = router;
