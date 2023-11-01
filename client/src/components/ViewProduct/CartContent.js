@@ -25,7 +25,7 @@ function CartContent (props) {
     }
 
     return (
-        <div className="flex flex-col gap-[1rem] w-[80vw]">
+        <div className="flex flex-col gap-[1rem] xl:w-[35rem] lg:w-[30rem] md:w-[20rem] w-[80vw]">
             <div>
                 <p>{props.type === "apparel" ? "Colors": "Flavors"}</p>
                 <div className="select-wrapper h-[4rem]">
@@ -52,13 +52,13 @@ function CartContent (props) {
                             name="quantity" />
                         <AiOutlinePlus onClick={props.incQuantity} className="text-[1rem] cursor-pointer" />
                     </div>
-                    <button onClick={props.handleSubmit} className="w-[100%] h-[2.5rem] bg-[#919191] rounded-md font-bold">ADD TO CART</button>
+                    <button onClick={props.handleSubmit} className="w-[100%] h-[2.5rem] md:w-[30rem] w-[40vw] bg-[#919191] rounded-md font-bold">ADD TO CART</button>
                 </div>
             </div>
             <ul>
                 {props.bullets}
             </ul>
-            <p className="md:w-[30rem] w-[100%]">{props.description}</p>    
+            <p className="w-[100%]">{props.description}</p>    
         </div>
     )
 

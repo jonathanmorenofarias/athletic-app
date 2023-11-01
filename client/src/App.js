@@ -36,9 +36,18 @@ function App() {
             cartItems={cartItems}
            />
            
+           <Cart
+            setCartOpen={ setCartOpen } cartOpen={ cartOpen } 
+            setCartTotal={ setCartTotal } cartTotal={ cartTotal } 
+            cartItems={ cartItems } setCartItems={ setCartItems }
+            loggedIn= { loggedIn }
+            />
+
             <Search
               searchOpen={searchOpen} setSearchOpen={setSearchOpen}
             />
+
+          
           
           <Routes>
             <Route path="/" element={<Home/>}/>

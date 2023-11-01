@@ -93,7 +93,7 @@ function Cart (props) {
       }
 
   return (
-      <div className={`flex flex-col z-[100] justify-between front absolute bg-white md:w-[25rem] w-[90vw] h-[100vh] p-[2rem] top-0 shadow-2xl duration-500 ${cartOpen ? "right-0": "md:-right-[25rem] -right-[90vw]"}`}>
+      <div className={`fixed top-0 flex flex-col z-[100] justify-between bg-white md:w-[25rem] w-[90vw] h-[100vh] p-[2rem] shadow-2xl duration-500 ${cartOpen ? "right-0": "md:-right-[25rem] -right-[90vw]"}`}>
              <div>
               <AiOutlineClose onClick={() => setCartOpen(old => !old)} className=" cursor-pointer float-right"/>
                 <h1 className="pb-[1rem] font-bold">CART</h1>

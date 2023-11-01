@@ -38,7 +38,7 @@ function Nav(props) {
             <div className="flex items-center gap-[1rem] text-[1.5rem]">
               <HiOutlineMagnifyingGlass onClick={() => setSearchOpen(true)} className="text-white lg:justify-self-start cursor-pointer" />
               <BsCart onClick={() => setCartOpen(old => !old)} className="relative text-[1.35rem] text-white cursor-pointer"/>
-              { loggedIn ? <Link to="/account"><AiOutlineUser className=" text-white cursor-pointer"/></Link>: <Link to="/login"><h1 className="text-white text-[.9rem] self-end">LOGIN</h1></Link> }
+              { loggedIn ? <a href="/account"><AiOutlineUser className=" text-white cursor-pointer"/></a>: <a href="/login"><h1 className="text-white text-[.9rem] self-end">LOGIN</h1></a> }
             </div>
         </div>
     )

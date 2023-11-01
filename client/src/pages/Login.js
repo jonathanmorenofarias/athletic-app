@@ -73,16 +73,14 @@ function Login (props) {
 
                     <label>Password</label>
                     <div className='flex items-center space-between relative'>
-                        <input className="w-[70vw] md:w-[20rem] border-[1px] md:p-2 p-1 focus:outline-0 bg-transparent " 
+                        <input className="w-[70vw] md:w-[20rem] border-[1px] md:p-2 p-1 focus:outline-0 bg-transparent mb-[1rem]" 
                         type={showPassword ? "text" : "password"}
                         placeholder="Enter Password"
                         onChange={handleChange}
                         name="password"
                         value={formData.password}/>
-                        {showPassword ? <AiFillEyeInvisible onClick={() => setShowPassword(false) }  className='text-[1.5rem] absolute right-5'/> : <AiFillEye onClick={() => setShowPassword(true)} className='text-[1.5rem] absolute right-5'/>}
+                        {showPassword ? <AiFillEyeInvisible onClick={() => setShowPassword(false) }  className='text-[1.5rem] absolute right-5 md:top-[10px] top-[6px]' /> : <AiFillEye onClick={() => setShowPassword(true)} className='text-[1.5rem] absolute right-5 md:top-[10px] top-[6px]'/>}
                     </div>
-
-                    <label className='self-end text-[.75rem]'>Forgot Password?</label>
                     <button className='bg-black text-white h-[3rem] w-[70vw] md:w-[20rem] bg-[red] rounded-md'>LOGIN</button>
                 </form>   
                 <p>Dont have an account? <Link to="/register" className='text-[#2f80fa]'>Sign Up!</Link></p>

@@ -116,41 +116,41 @@ function ViewProduct (props) {
         )
     }
         return (
-            <div className="flex flex-col justify-center items-center py-[4rem]">
-            <div className="flex md:flex-row flex-col justify-center items-start gap-[2rem]">
-                <div className="flex flex-col gap-[1rem]">
-                    <img src={flavorImage} alt={`of ${product.name}`} className=" xl:h-[40rem] xl:w-[40rem] lg:h-[27rem] lg:w-[27rem] md:h-[20rem] md:w-[20rem] h-[80vw] h-[80vw] rounded-lg" />
-                    <div className="flex gap-[1rem]">
-                        {elements.map((flavor) =>  
-                            <img 
-                            src={flavor.image}
-                            onClick={() => setFlavorImage(flavor.image)} 
-                            className={`lg:h-[5rem] md:h-[4rem] h-[10vw] rounded-lg hover:cursor-pointer 
-                            ${flavorImage === flavor.image ? "border-b-[3px] border-[red]": null }`} />)}
+            <div className="flex flex-col justify-center items-center gap-[3rem] px-[2rem] py-[4rem]">
+                <div className="flex md:flex-row flex-col justify-center items-center md:items-start gap-[2rem]">
+                    <div className="flex flex-col gap-[1rem]">
+                        <img src={flavorImage} alt={`of ${product.name}`} className=" xl:h-[40rem] xl:w-[40rem] lg:h-[27rem] lg:w-[27rem] md:h-[20rem] md:w-[20rem] h-[90vw] h-[90vw] rounded-lg" />
+                        <div className="flex gap-[1rem]">
+                            {elements.map((flavor) =>  
+                                <img 
+                                src={flavor.image}
+                                onClick={() => setFlavorImage(flavor.image)} 
+                                className={`lg:h-[5rem] md:h-[4rem] h-[10vw] rounded-lg hover:cursor-pointer 
+                                ${flavorImage === flavor.image ? "border-b-[3px] border-[red]": null }`} />)}
+                        </div>
+                    </div>
+                    <div className="flex flex-col gap-[.5rem]">
+                        <h1 className="font-bold text-[2rem]">{product.name}</h1>
+                        <p className="font-bold text-[1.25rem]">{product.price}</p>
+                        <div className="flex justify-start items-center gap-[1rem]">
+                            {roundedStars("1.25rem", "yellow-300")}
+                            <p className="text-[1rem]">{reviews.length} Reviews</p>
+                        </div>
+                        <hr className="hr-prod"/>
+                        <CartContent 
+                            description={product.longDesc} 
+                            type = {product.type}
+                            bullets={bullets} 
+                            flavors={flavors} 
+                            formData = { formData }
+                            setFormData = { setFormData }
+                            incQuantity = { () => changeQuantity("add") }
+                            decQuantity = { () => changeQuantity("sub") }
+                            handleChange = { handleChange }
+                            handleSubmit = { handleSubmit }
+                        />
                     </div>
                 </div>
-                <div className="flex flex-col gap-[.5rem]">
-                    <h1 className="font-bold text-[2rem]">{product.name}</h1>
-                    <p className="font-bold text-[1.25rem]">{product.price}</p>
-                    <div className="flex justify-start items-center gap-[1rem]">
-                        {roundedStars("1.25rem", "yellow-300")}
-                        <p className="text-[1rem]">{reviews.length} Reviews</p>
-                    </div>
-                    <hr className="hr-prod"/>
-                    <CartContent 
-                        description={product.longDesc} 
-                        type = {product.type}
-                        bullets={bullets} 
-                        flavors={flavors} 
-                        formData = { formData }
-                        setFormData = { setFormData }
-                        incQuantity = { () => changeQuantity("add") }
-                        decQuantity = { () => changeQuantity("sub") }
-                        handleChange = { handleChange }
-                        handleSubmit = { handleSubmit }
-                    />
-                </div>
-            </div>
                 <Reviews list={reviews} stars={roundedStars} />
             </div>
         )
