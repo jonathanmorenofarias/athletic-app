@@ -3,6 +3,20 @@ const router = express.Router();
 
 const Item = require('../models/Item');
 
+
+router.get('/category/query', async (req, res) => {
+    const { name } = req.query;
+    
+    if(!name) return res.status(400).json({ message: 'Query not found' });
+
+    try {
+        const items = await Item.find({ name: { $regex: name, $options: 'i' } });
+        res.status(200).json(items);
+    }catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
 router.get('/category/topsellers', async (req, res) => {
     try {
         const topSellers = await Item.find().sort({sold: -1}).limit(4).select('name defaultImage price');
@@ -49,7 +63,6 @@ router.get('/category/accessories', async (req, res) => {
     }     
 });
 
-
 router.post('/', async (req, res) => {
     const item = new Item ({
         name: req.body.name,
@@ -70,5 +83,6 @@ router.post('/', async (req, res) => {
         res.status(400).json({ message: err.message });
     }
 }); 
+
 
 module.exports = router;

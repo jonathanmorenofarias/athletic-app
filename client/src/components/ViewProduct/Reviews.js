@@ -9,7 +9,7 @@ function Reviews (props) {
     })
 
     return (
-        <div>
+        <div className='px-[2rem]'>
             <div className="flex flex-col justify-center items-center py-[2rem] w-[90vw]">
                 <h1 className="text-[1.75rem]">Customer Reviews</h1>
                 <div className='scale-[130%] '>{props.stars("1.5rem", "black")}</div>

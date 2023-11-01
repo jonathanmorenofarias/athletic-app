@@ -1,25 +1,28 @@
 import React from "react";
 import Product from "../components/Home/Product.js";
 import { useState, useEffect } from "react";
-import { Route, useParams } from "react-router-dom";
+import { Route, useParams, useLocation } from "react-router-dom";
 import NotFound from "./NotFound.js";
 
 
 function AllProducts () {
     const params = useParams();
-    const productType = params.productType;
+    const location = useLocation();
 
+    const searchParams = new URLSearchParams(location.search);
+
+    const productType = params.productType;
     const [products, setProducts] = useState([{}]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`/api/items/category/${productType}`)
+        fetch(`/api/items/category/${productType}${location.search}`)
             .then((res) => res.json())
             .then((data) => setProducts(data))
             .then(() => setLoading(false));
     }, []);
 
-    if ( productType !== "supplements" && productType !== "apparel" && productType !== "accessories") {
+    if ( productType !== "supplements" && productType !== "apparel" && productType !== "accessories" && productType !== "query") {
         return(<NotFound/>)
     }
 
@@ -30,19 +33,20 @@ function AllProducts () {
             </div>
         )
     }
-    
 
     return (
-        <div className="flex flex-col justify-start items-center my-[2rem]">
+        <div className={`flex flex-col ${products.length === 0 ? "justify-center" : "justify-start"} items-center my-[2rem] min-h-[70vh] gap-[2rem] py-[1rem]`}>
             <h1 className="text-[.8rem] text-[#AAAAAA]">{products.length} products</h1>
-            <div className="flex justify-center flex-wrap gap-[2rem]">
+            {products.length === 0 && <h1 className="text-[2rem] text-black text-center">{`NO PRODUCTS FOR SEARCH "${searchParams.get("name")}" FOUND`}</h1>}
+            <div className="flex justify-center flex-wrap gap-[2rem] px-[2rem]">
                 {products.map(product => (
-                    <Product 
+                    <Product
                     key={product._id} 
                     _id={product._id}
                     name={product.name}
                     image={product.defaultImage}
                     price={product.price}
+                    type = "listall"
                     />
                 ))}
             </div>

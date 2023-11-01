@@ -17,7 +17,7 @@ function LandingProduct (props) {
             <strong className="text-[2rem]">Shop WAVE Protein Powder.</strong>
             <p className="text-[2rem]"> Experience specially formulated recipes designed for athletes. </p>
         </div>
-        <img src="https://res.cloudinary.com/dwdrq4xo1/image/upload/v1695802299/wave/Global/landing-product_cgskby.png" className="h-[70rem] "/>
+        <img src="https://res.cloudinary.com/dwdrq4xo1/image/upload/v1695802299/wave/Global/landing-product_cgskby.png" className="h-[70rem] h-[50vw] "/>
     </div>)
 }
 

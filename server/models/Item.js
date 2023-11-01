@@ -11,7 +11,7 @@ const itemSchema = new mongoose.Schema({
             type: String, required: true
         },
         price:{
-            type: String, required: true
+            type: Number, required: true
         },
         sold: {
             type: Number, default: 0

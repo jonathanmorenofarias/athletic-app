@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AiOutlineUser, AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 
 function Register () {
     const [formData, setFormData] = useState(
@@ -8,6 +9,8 @@ function Register () {
             password: ''
         }
         )
+        
+    const [showPassword, setShowPassword] = useState(false)
 
     const handleChange = (e) => {
         setFormData({
@@ -36,7 +39,7 @@ function Register () {
     }
 
     return (
-        <div className="flex flex-col items-center my-[20rem] gap-[2rem]">
+        <div className="flex flex-col items-center justify-center min-h-[70vh] gap-[2rem]">
                 <h1 className="text-[2rem] font-bold">Register</h1>
                 <form onSubmit={handleSubmit} className='flex flex-col gap-[.5rem]'>
                     <label>Email</label>
@@ -54,13 +57,16 @@ function Register () {
                         name="username" 
                         value={formData.username}/>
                     <label>Password</label>
-                    <input className="w-[70vw] md:w-[20rem] border-[1px] md:p-2 p-1 focus:outline-0 bg-transparent mb-[1rem]" 
-                        type="text" 
-                        placeholder="Create a Password" 
-                        onChange={handleChange} 
-                        name="password" 
-                        value={formData.password}/>
-                    <button className='bg-[black] text-white h-[3rem] w-[70vw] md:w-[20rem] bg-[red] rounded-md'>SIGN UP</button>
+                    <div className='flex items-center space-between relative'>
+                        <input className="w-[70vw] md:w-[20rem] border-[1px] md:p-2 p-1 focus:outline-0 bg-transparent " 
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Create a Password" 
+                            onChange={handleChange} 
+                            name="password" 
+                            value={formData.password}/>
+                            {showPassword ? <AiFillEyeInvisible onClick={() => setShowPassword(false) }  className='text-[1.5rem] absolute right-5'/> : <AiFillEye onClick={() => setShowPassword(true)} className='text-[1.5rem] absolute right-5'/>}
+                    </div>
+                    <button className='bg-black text-white h-[3rem] w-[70vw] md:w-[20rem] bg-[red] rounded-md mt-[1rem]'>SIGN UP</button>
                 </form>   
 
                 

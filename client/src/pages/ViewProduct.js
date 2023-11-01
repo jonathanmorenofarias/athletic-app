@@ -5,16 +5,14 @@ import Reviews from "../components/ViewProduct/Reviews";
 import CartContent from "../components/ViewProduct/CartContent";
 
 
-function ViewProduct () {
+function ViewProduct (props) {
+    const { cartOpen, setCartOpen } = props
     const params = useParams();
     const productID = params.productID;
-    
     const [product, setProduct] = useState({});
-    const [elements, setType] = useState([{}]);
+    const [elements, setElements] = useState([{}]);
     const [reviews, setReviews] = useState([]);
     const [shortDesc, setShortDesc] = useState([]);
-    const [quantity, setQuantity] = useState(1);
-    const [flavorChoice, setFlavorChoice] = useState("");
     const [flavorImage, setFlavorImage] = useState("");
     const [loading, setLoading] = useState(true);
 
@@ -22,8 +20,11 @@ function ViewProduct () {
         fetch(`/api/items/${productID}`)
         .then(res => res.json())
         .then(product => {
-            setType(product.elements)
-            setFlavorChoice(product.elements[0].variant)
+            setFormData({
+                ...formData,
+                flavorChoice: product.elements[0].variant
+            })
+            setElements(product.elements)
             setFlavorImage(product.elements[0].image)
             setProduct(product)
             setReviews(product.reviews)
@@ -31,6 +32,53 @@ function ViewProduct () {
         }).then(() => setLoading(false))
         
     }, []);
+
+    const [formData, setFormData] = useState({
+        _id: productID,
+        flavorChoice: "",
+        quantity: 1
+    });
+
+    if (product.type === "apparel") {
+        formData.size = "small"
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        fetch("/api/cart/additem", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                'authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(data => {
+
+        })
+
+        setCartOpen(true)
+    }
+
+    const handleChange = (e) => {
+        setFormData ({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+
+    }
+    
+    function changeQuantity (action) {
+        action === "add" ? setFormData({
+            ...formData,
+            quantity: formData.quantity + 1
+        }) : setFormData({
+            ...formData,
+            quantity: formData.quantity - 1
+        })
+
+    }
 
     const bullets = shortDesc.map((desc) => <li>» {desc} </li>)
 
@@ -60,11 +108,6 @@ function ViewProduct () {
         return (<div className="flex">{arr}</div>)
     }
 
-    function handleFlavor (event) {
-        setFlavorImage(elements.find(x => x.variant === event.target.value).image)
-        setFlavorChoice(event.target.value)
-    }
-
     if (loading) {
         return (
             <div className="flex justify-center items-center h-screen">
@@ -74,15 +117,15 @@ function ViewProduct () {
     }
         return (
             <div className="flex flex-col justify-center items-center py-[4rem]">
-            <div className="flex justify-center items-start gap-[2rem]">
+            <div className="flex md:flex-row flex-col justify-center items-start gap-[2rem]">
                 <div className="flex flex-col gap-[1rem]">
-                    <img src={flavorImage} alt={`of ${product.name}`} className="h-[40rem] rounded-lg" />
+                    <img src={flavorImage} alt={`of ${product.name}`} className=" xl:h-[40rem] xl:w-[40rem] lg:h-[27rem] lg:w-[27rem] md:h-[20rem] md:w-[20rem] h-[80vw] h-[80vw] rounded-lg" />
                     <div className="flex gap-[1rem]">
                         {elements.map((flavor) =>  
                             <img 
                             src={flavor.image}
                             onClick={() => setFlavorImage(flavor.image)} 
-                            className={`h-[5rem] rounded-lg hover:cursor-pointer 
+                            className={`lg:h-[5rem] md:h-[4rem] h-[10vw] rounded-lg hover:cursor-pointer 
                             ${flavorImage === flavor.image ? "border-b-[3px] border-[red]": null }`} />)}
                     </div>
                 </div>
@@ -99,10 +142,12 @@ function ViewProduct () {
                         type = {product.type}
                         bullets={bullets} 
                         flavors={flavors} 
-                        flavorChoice={flavorChoice} 
-                        handleFlavor={handleFlavor} 
-                        quantity={quantity} 
-                        setQuantity={setQuantity}
+                        formData = { formData }
+                        setFormData = { setFormData }
+                        incQuantity = { () => changeQuantity("add") }
+                        decQuantity = { () => changeQuantity("sub") }
+                        handleChange = { handleChange }
+                        handleSubmit = { handleSubmit }
                     />
                 </div>
             </div>

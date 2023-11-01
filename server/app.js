@@ -1,7 +1,10 @@
 const express = require('express');
 const database = require('./database');
+
 const itemRoutes = require('./routes/item');
-const userRoutes = require('./routes/user');
+const authRoutes = require('./routes/authentication');
+const cartRoutes = require('./routes/cart');
+const checkoutRoutes = require('./routes/checkout');
 
 const port = process.env.PORT || 3000
 const app = express();
@@ -16,8 +19,9 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 app.use('/api/items', itemRoutes);
-app.use('/api/user', userRoutes);
-
+app.use('/api/user', authRoutes);
+app.use('/api/cart', cartRoutes);
+app.use('/api/checkout', checkoutRoutes);
 //listen on env port or 3000 if none
 
 app.listen(port, () => {
