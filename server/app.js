@@ -8,6 +8,10 @@ const checkoutRoutes = require('./routes/checkout');
 
 const port = process.env.PORT || 3000
 const app = express();
+const cors = require('cors');
+
+app.use(express.json());
+app.use(cors({ origin: 'https://athletic-app.vercel.app' }));
 
 //log the request method, endpoint and time
 app.use((req, res, next) => {
@@ -15,7 +19,6 @@ app.use((req, res, next) => {
     console.log(req.method, req.url, time);
     next();
 })
-
 
 
 app.use(express.json());
