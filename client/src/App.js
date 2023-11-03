@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import Account from "./pages/Account"
 import Cart from "./pages/global/Cart";
 import Search from "./pages/global/Search";
+import Burger from "./pages/global/Burger";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem('token'))
@@ -18,6 +19,7 @@ function App() {
   const [cartTotal, setCartTotal] = useState(0)
   const [searchOpen, setSearchOpen] = useState(false)
   const [cartItems, setCartItems] = useState([{}])
+  const [burgerOpen, setBurgerOpen] = useState(false)
 
   /*<Cart
             setCartOpen={ setCartOpen } cartOpen={ cartOpen } 
@@ -32,13 +34,14 @@ function App() {
             loggedIn={loggedIn} setLoggedIn={setLoggedIn} 
             cartOpen={cartOpen} setCartOpen={setCartOpen}
             cartTotal={cartTotal} setCartTotal={setCartTotal}
+            setBurgerOpen= { setBurgerOpen } 
             searchOpen={searchOpen} setSearchOpen={setSearchOpen}
             cartItems={cartItems}
            />
            
            <Cart
             setCartOpen={ setCartOpen } cartOpen={ cartOpen } 
-            setCartTotal={ setCartTotal } cartTotal={ cartTotal } 
+            setCartTotal={ setCartTotal } cartTotal={ cartTotal }
             cartItems={ cartItems } setCartItems={ setCartItems }
             loggedIn= { loggedIn }
             />
@@ -47,6 +50,10 @@ function App() {
               searchOpen={searchOpen} setSearchOpen={setSearchOpen}
             />
 
+            <Burger
+              setBurgerOpen={setBurgerOpen}
+              burgerOpen={burgerOpen}
+            />
           
           
           <Routes>

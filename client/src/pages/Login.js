@@ -24,7 +24,7 @@ function Login (props) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch('/api/user/login', {
+        fetch('https://wave-api-74wv.onrender.com/api/user/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

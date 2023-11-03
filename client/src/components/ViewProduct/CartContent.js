@@ -52,7 +52,7 @@ function CartContent (props) {
                             name="quantity" />
                         <AiOutlinePlus onClick={props.incQuantity} className="text-[1rem] cursor-pointer" />
                     </div>
-                    <button onClick={props.handleSubmit} className="w-[100%] h-[2.5rem] md:w-[30rem] w-[40vw] bg-[#919191] rounded-md font-bold">ADD TO CART</button>
+                    <button onClick={props.handleSubmit} className="w-[100%] h-[2.5rem] md:w-[30rem] w-[40vw] md:text-[1rem] text-[.8rem] bg-[#919191] rounded-md font-bold">ADD TO CART</button>
                 </div>
             </div>
             <ul>

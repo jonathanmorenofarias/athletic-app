@@ -23,7 +23,7 @@ function Register () {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        fetch('/api/user/register', {
+        fetch('https://wave-api-74wv.onrender.com/api/user/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

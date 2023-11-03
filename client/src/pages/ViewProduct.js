@@ -17,7 +17,7 @@ function ViewProduct (props) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`/api/items/${productID}`)
+        fetch(`https://wave-api-74wv.onrender.com/api/items/${productID}`)
         .then(res => res.json())
         .then(product => {
             setFormData({
@@ -39,13 +39,17 @@ function ViewProduct (props) {
         quantity: 1
     });
 
-    if (product.type === "apparel") {
-        formData.size = "small"
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch("/api/cart/additem", {
+
+        //if it is an apparel product and they didn't select a size, default to small
+
+        if (product.type === "apparel" && !formData.size) {
+            formData.size = "small"
+        }
+
+        fetch("https://wave-api-74wv.onrender.com/api/cart/additem", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -66,6 +70,7 @@ function ViewProduct (props) {
             ...formData,
             [e.target.name]: e.target.value
         })
+        console.log(formData)
 
     }
     

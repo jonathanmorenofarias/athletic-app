@@ -8,12 +8,13 @@ import { BsCart } from 'react-icons/bs';
 
 function Nav(props) {
     const { cartOpen, setCartOpen, 
+      setBurgerOpen,
       setCartTotal, cartTotal, 
       searchOpen, setSearchOpen,
       loggedIn, cartItems
     } = props
 
-    const [burgerOpen, setBurgerOpen] = useState(false)
+
 
     let categories = ["Supplements" ,"Apparel", "Accessories"];
 
@@ -25,8 +26,7 @@ function Nav(props) {
 
     return (
         <div className="flex sticky z-[99] top-0 bg-black lg:justify-around justify-between items-center h-[4rem] w-[100vw] px-[1.5rem] shadow-md">
-            <AiOutlineMenu className="text-white lg:hidden" onClick={() => setBurgerOpen(old => !old)}/>
-            
+            <AiOutlineMenu className="text-white lg:hidden cursor-pointer" onClick={() => setBurgerOpen(old => !old)}/>
             <div className="front lg:flex hidden text-[.9rem] text-white gap-[1rem]">
               <a href="/supplements" className="line-hover">Supplements</a>
               <a href="/apparel" className="line-hover">Apparel</a>

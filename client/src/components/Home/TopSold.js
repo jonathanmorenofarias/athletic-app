@@ -6,7 +6,7 @@ function TopSold(props) {
     const [products, setProducts] = useState([{}])
 
     useEffect(() => {
-        fetch("/api/items/category/topsellers")
+        fetch("https://wave-api-74wv.onrender.com/api/items/category/topsellers")
             .then((res) => res.json())
             .then((data) => setProducts(data))
     }, []);

@@ -4,7 +4,7 @@ function Cart (props) {
     const { cartOpen, setCartOpen, cartItems, setCartItems } = props
 
     const toggleCart =  () => {
-      fetch("/api/cart/allitems", {
+      fetch("https://wave-api-74wv.onrender.com/api/cart/allitems", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -18,7 +18,7 @@ function Cart (props) {
     }
 
     const getTotal =  () => { 
-      fetch("/api/cart/total", {
+      fetch("https://wave-api-74wv.onrender.com/api/cart/total", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +38,7 @@ function Cart (props) {
     }, [cartOpen])
 
     function removeItem (id, flavorChoice) {
-        fetch("/api/cart/removeitem", {
+        fetch("https://wave-api-74wv.onrender.com/api/cart/removeitem", {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -55,10 +55,10 @@ function Cart (props) {
       }
   
       let cartItemsList
-      if (props.loggedIn) {
+      if (props.loggedIn && cartItems.length > 0) {
         cartItemsList = cartItems.map(x => {
           return (
-            <div>
+            <div className="">
               <hr />
               <div className="flex justify-between items-center my-[1.5rem] h-[6rem]">
                 <img src={x.image} alt="test" className="h-[100%] " />
@@ -78,7 +78,7 @@ function Cart (props) {
       }
   
       const checkout = () => {
-        fetch("/api/checkout/create-checkout-session", {
+        fetch("https://wave-api-74wv.onrender.com/api/checkout/create-checkout-session", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -93,15 +93,17 @@ function Cart (props) {
       }
 
   return (
-      <div className={`fixed top-0 flex flex-col z-[100] justify-between bg-white md:w-[25rem] w-[90vw] h-[100vh] p-[2rem] shadow-2xl duration-500 ${cartOpen ? "right-0": "md:-right-[25rem] -right-[90vw]"}`}>
+      <div className={`fixed top-0 flex flex-col z-[100] justify-start bg-white md:w-[25rem] w-[90vw] h-[100vh] p-[2rem] shadow-2xl duration-500  ${cartOpen ? "right-0": "md:-right-[25rem] -right-[90vw]"}`}>
              <div>
-              <AiOutlineClose onClick={() => setCartOpen(old => !old)} className=" cursor-pointer float-right"/>
-                <h1 className="pb-[1rem] font-bold">CART</h1>
-                {props.cartTotal === 0 && <p className="border-t-[1px] py-[1rem] font-bold text-center">YOUR CART IS EMPTY!</p>}
-                {cartItemsList}
+              <AiOutlineClose onClick={() => setCartOpen(old => !old)} className=" cursor-pointer float-right "/>
+                <h1 className="pb-[1rem] font-bold border-b-[1px]">CART</h1>
+                {props.cartTotal === 0 && <p className="py-[1rem] font-bold text-center">YOUR CART IS EMPTY!</p>}
              </div>
-             <div className="flex  flex-col justify-center items-center gap-[1rem] border-t-[1px] py-[2rem]">
-                <div className="flex justify-between w-[100%] ">
+             <div className="overflow-x-scroll">
+              {cartItemsList}
+             </div>
+             <div className="flex flex-col justify-center items-center gap-[1rem] border-t-[1px] py-[2rem]">
+                <div className="flex justify-between w-[100%]">
                   <p>SUBTOTAL</p>
                   <h1>${props.cartTotal.toFixed(2)}</h1>
                 </div>

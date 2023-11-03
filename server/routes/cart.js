@@ -39,6 +39,7 @@ router.get('/allitems', authenticateToken, async (req, res) => {
                 quantity: item.quantity,
                 flavorChoice: item.flavorChoice,
                 image: productImage.image,
+                size: item.size,
                 price: product.price
             }
         })
@@ -48,7 +49,12 @@ router.get('/allitems', authenticateToken, async (req, res) => {
     }
 });
 
+
+
 router.put('/additem', authenticateToken, async (req, res) => {
+    //check if they sent a size in req.body
+
+
     try {
         let query = { userId: req.user.id, "items._id": req.body._id, "items.flavorChoice": req.body.flavorChoice };
         if (req.body.size){

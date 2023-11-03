@@ -16,7 +16,7 @@ function AllProducts () {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`/api/items/category/${productType}${location.search}`)
+        fetch(`https://wave-api-74wv.onrender.com/api/items/category/${productType}${location.search}`)
             .then((res) => res.json())
             .then((data) => setProducts(data))
             .then(() => setLoading(false));
