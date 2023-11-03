@@ -33,8 +33,8 @@ router.post ('/create-checkout-session', authenticateToken, async (req, res) => 
             payment_method_types: ['card'],
             mode: 'payment',
             line_items: await Promise.all(items),
-            success_url: 'http://localhost:3000',
-            cancel_url: 'http://localhost:3000'
+            success_url: 'https://athletic-app.vercel.app/',
+            cancel_url: 'https://athletic-app.vercel.app/'
         })
         res.json({ url: session.url });   
     }
